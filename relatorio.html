@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/estilo.css">
+
+    <script src="/js/home.js"></script>
+    <script src="/js/relatorio.js"></script>
+
+    <script src="/js/exportPDF.js" type="text/JavaScript"></script>
+    <script src="/js/exportCSV.js" type="text/JavaScript"></script>
+   
+
+</head>
+
+<body onload="validaLogin()">
+    <div class="navbar navbar-dark bg-dark  mb-1">
+        <nav class="col-12 w-100 navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <h6 class="navbar-brand">Sistema Agendamento</h6>
+            </div>
+            <div class="col-md-8 col-sm-3 col-xs-3">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item  mb-1">
+                        <a class="nav-link" href="javascript:home()">Home</a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a class="nav-link" href="javascript:relatorio()">Lista de Agendamento</a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a class="nav-link" href="javascript:solicitacoes()">Solicitações</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1 col-sm-3 col-xs-3 ">
+                <button class="btn btn-primary" onclick="logout()">logout</button>
+            </div>
+        </nav>
+    </div>
+    <div class="container h100 d-flex">  <!-- ocupar toda a página, centralizada na vertical -->
+        <div class="row w-100 align-items-center">  <!-- ocupa toda a largula centralizando o conteúdo -->
+            <div id="foto text-left">
+                <div class="media ">
+                    <div id="imgUser" class="border  rounded"></div>
+                    <h5 class="mt-0">
+                        <br>
+                        <p id="user"></p>
+                    </h5>
+                </div>
+            </div>
+            <div class="col-12 row" id="filtros">
+                <div class="col-8">
+                    <select id="sel_status">
+                        <option value='I'> Inicial </option>
+                        <option value='L'> Liberado </option>
+                        <option value='N'> Negado </option>
+                        <option value='C'> Cancelado </option>
+                    </select>
+                    <button class="btn btn-primary" onclick="buscarPorStatus()">Por Status</button>
+                </div>
+                
+                <div class="col-4">
+                    <button class="btn btn btn-primary" id="btnImprimir" onclick="CriaPDF()">PDF</button>
+                    <button class="btn btn btn-primary" id="btnImprimir" onclick="exportar()">CSV</button>
+                    <!--
+                    <input type="date" id="dataPedido">
+                    <button class="btn btn-primary" onclick="buscarPorData()">Por Data</button>
+                    -->
+                </div>
+            
+            
+                <div class="row" id="tableResposta">
+                </div>
+                <div class="col-12">
+                    <div id="msgCSV"></div>
+                <div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
